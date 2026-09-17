@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ember: #c1440e;
+  --ember-soft: #d96a2b;
+  --ember-deep: #8e2f09;
+  --brace: #7b2414;
+  --wood: #2a1b12;
+  --wood-deep: #180f09;
+  --wood-bark: #4a3121;
+  --straw: #d7b36a;
+  --straw-soft: #e7d2a0;
+  --parchment: #f5ebd8;
+  --sand: #eadbbe;
+  --ink: #231710;
+  --brass: #c89b3c;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-parchment text-ink font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif font-semibold;
+  }
+
+  ::selection {
+    background: var(--ember);
+    color: var(--parchment);
+  }
+}
+
+@layer components {
+  /* Squared, branding-iron feel button */
+  .btn-brand {
+    border-radius: 0.35rem;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  }
+  .btn-brand:hover {
+    transform: translateY(-2px);
+  }
+
+  .card-wood {
+    @apply bg-white shadow-warm;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(74, 49, 33, 0.12);
+  }
+
+  /* Warm noise + wood-grain textures via inline SVG data URIs (no network) */
+  .texture-paper {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='60' height='60' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  /* Vertical plank wood grain for the dark sections */
+  .texture-wood {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.22' numOctaves='4' seed='7'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23w)' opacity='0.08'/%3E%3C/svg%3E");
+  }
+
+  .nav-link {
+    @apply relative text-sm font-semibold uppercase tracking-widest transition-colors;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 block h-0.5 w-0 bg-ember transition-all duration-300;
+  }
+  .nav-link:hover::after,
+  .nav-link[data-active='true']::after {
+    @apply w-full;
+  }
+
+  /* Rope / stitched divider */
+  .rule-stitch {
+    background-image: repeating-linear-gradient(
+      90deg,
+      currentColor 0,
+      currentColor 10px,
+      transparent 10px,
+      transparent 18px
+    );
+  }
+}
+
+/* Masonry columns for the gallery */
+.masonry {
+  column-count: 2;
+  column-gap: 0.625rem;
+}
+@media (min-width: 1024px) {
+  .masonry {
+    column-count: 3;
+    column-gap: 1rem;
+  }
+}
+.masonry > * {
+  break-inside: avoid;
+  margin-bottom: 0.625rem;
+}
+@media (min-width: 1024px) {
+  .masonry > * {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
