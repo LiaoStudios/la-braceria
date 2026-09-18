@@ -1,4 +1,5 @@
 import { Reveal } from '../ui/Reveal'
+import { withBase } from '../../lib/paths'
 
 export function Story() {
   return (
@@ -21,7 +22,7 @@ export function Story() {
           </div>
           <div className="mt-10 flex items-center gap-5">
             <span className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-parchment ring-2 ring-straw">
-              <img src="/logo.webp" alt="La Braceria" className="h-[94%] w-[94%] rounded-full object-cover" />
+              <img src={withBase('/logo.webp')} alt="La Braceria" className="h-[94%] w-[94%] rounded-full object-cover" />
             </span>
             <div>
               <span className="block font-serif text-2xl">La Braceria</span>
@@ -33,7 +34,7 @@ export function Story() {
         <Reveal delay={0.15} className="flex justify-center lg:justify-end">
           <div className="relative w-full max-w-lg">
             <img
-              src="/images/locale/interior-bar.webp"
+              src={withBase('/images/locale/interior-bar.webp')}
               alt="Il bancone in legno e la sala de La Braceria"
               loading="lazy"
               className="relative z-20 aspect-[4/5] w-full rounded-[1.5rem] object-cover shadow-2xl"
@@ -41,7 +42,7 @@ export function Story() {
             <div className="absolute -left-6 -top-6 z-10 h-full w-full rounded-[1.5rem] border-2 border-straw/30" />
             {/* the brand roundel as a signature detail */}
             <div className="absolute -bottom-8 -right-6 z-30 h-32 w-32 overflow-hidden rounded-full border-4 border-parchment shadow-warm">
-              <img src="/logo.webp" alt="La Braceria" className="h-full w-full object-cover" />
+              <img src={withBase('/logo.webp')} alt="La Braceria" className="h-full w-full object-cover" />
             </div>
           </div>
         </Reveal>

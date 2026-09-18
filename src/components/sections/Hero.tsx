@@ -2,13 +2,14 @@ import { motion } from 'framer-motion'
 import { UtensilsCrossed, Phone, Flame } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { siteInfo } from '../../data/siteInfo'
+import { withBase } from '../../lib/paths'
 
 export function Hero() {
   return (
     <section id="home" className="relative flex h-[100svh] min-h-[600px] items-center justify-center overflow-hidden bg-wood-deep">
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero/brace.webp"
+          src={withBase('/images/hero/brace.webp')}
           alt="Carne selezionata cotta sulla brace di legna"
           className="h-full w-full object-cover"
         />

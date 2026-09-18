@@ -3,6 +3,7 @@ import { Flame } from 'lucide-react'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Reveal } from '../ui/Reveal'
+import { withBase } from '../../lib/paths'
 
 export function BraceSection() {
   const ref = useRef<HTMLDivElement>(null)
@@ -48,10 +49,10 @@ export function BraceSection() {
 
         <div className="relative order-1 h-[420px] md:h-[520px] lg:order-2">
           <motion.div style={{ y }} className="absolute right-0 top-0 h-[85%] w-[78%] overflow-hidden rounded-[1.5rem] shadow-warm ring-1 ring-black/30">
-            <img src="/images/locale/brace-fire.webp" alt="La brace accesa nel locale" loading="lazy" className="h-full w-full object-cover" />
+            <img src={withBase('/images/locale/brace-fire.webp')} alt="La brace accesa nel locale" loading="lazy" className="h-full w-full object-cover" />
           </motion.div>
           <motion.div style={{ y: ySmall }} className="absolute bottom-0 left-0 h-[45%] w-[48%] overflow-hidden rounded-[1.25rem] border-4 border-parchment shadow-warm">
-            <img src="/images/meat/grigliata.webp" alt="Grigliata mista alla brace" loading="lazy" className="h-full w-full object-cover" />
+            <img src={withBase('/images/meat/grigliata.webp')} alt="Grigliata mista alla brace" loading="lazy" className="h-full w-full object-cover" />
           </motion.div>
           <div className="absolute -bottom-4 right-8 flex h-24 w-24 items-center justify-center rounded-full bg-ember text-center text-xs font-bold uppercase leading-tight tracking-wide text-parchment shadow-ember">
             Brace<br />di legna

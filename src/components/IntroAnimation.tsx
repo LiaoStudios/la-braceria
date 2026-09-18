@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import { withBase } from '../lib/paths'
 
 const REVEAL_MS = 2000 // how long the logo shows before flying up
 const HARD_CAP_MS = 4200 // absolute fallback so the intro can NEVER get stuck
@@ -123,7 +124,7 @@ export function IntroAnimation({ onFinish }: { onFinish?: () => void }) {
               transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
               style={{ filter: 'drop-shadow(0 0 45px rgba(217,106,43,0.55))' }}
             >
-              <img src="/logo.webp" alt="La Braceria" className="h-56 w-56 rounded-full object-cover sm:h-64 sm:w-64" />
+              <img src={withBase('/logo.webp')} alt="La Braceria" className="h-56 w-56 rounded-full object-cover sm:h-64 sm:w-64" />
             </motion.div>
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.35em] text-straw/80">
               Castel Maggiore
@@ -141,7 +142,7 @@ export function IntroAnimation({ onFinish }: { onFinish?: () => void }) {
           transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
           onAnimationComplete={finish}
         >
-          <img src="/logo.webp" alt="La Braceria" className="h-full w-full object-cover" />
+          <img src={withBase('/logo.webp')} alt="La Braceria" className="h-full w-full object-cover" />
         </motion.div>
       )}
 

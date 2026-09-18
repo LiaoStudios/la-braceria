@@ -5,6 +5,7 @@ import { Phone } from 'lucide-react'
 import { menu, type MenuItem } from '../data/menu'
 import { siteInfo } from '../data/siteInfo'
 import { fadeUp, stagger } from '../lib/motion'
+import { withBase } from '../lib/paths'
 
 const tagStyle: Record<NonNullable<MenuItem['tag']>, string> = {
   specialità: 'bg-ember text-parchment',
@@ -16,7 +17,7 @@ function Item({ item }: { item: MenuItem }) {
   return (
     <motion.div variants={fadeUp} className="flex gap-4 rounded-xl bg-white p-4 shadow-warm ring-1 ring-wood/10">
       {item.image && (
-        <img src={item.image} alt={item.name} loading="lazy" className="h-24 w-24 shrink-0 rounded-lg object-cover" />
+        <img src={withBase(item.image)} alt={item.name} loading="lazy" className="h-24 w-24 shrink-0 rounded-lg object-cover" />
       )}
       <div className="flex-1">
         <div className="flex items-baseline justify-between gap-3">

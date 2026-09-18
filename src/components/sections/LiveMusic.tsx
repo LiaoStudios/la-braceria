@@ -5,6 +5,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 import { fadeUp, inView, stagger } from '../../lib/motion'
 import { eventPhotos } from '../../data/events'
 import { siteInfo } from '../../data/siteInfo'
+import { withBase } from '../../lib/paths'
 
 /**
  * "Musica dal vivo" — a dedicated section with real photos from past concert
@@ -48,7 +49,7 @@ export function LiveMusic() {
               className="group relative aspect-[4/3] overflow-hidden rounded-xl shadow-warm"
             >
               <img
-                src={photo.src}
+                src={withBase(photo.src)}
                 alt={photo.alt}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
